@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component, Fragment } from 'react';
+//router
+import {
+    Route,
+    Router
+} from 'react-router-dom'
+import AppRoutes from './AppRoutes';
+import { createBrowserHistory } from "history";
 
-import { historyService } from './_services'
-import CommitBody from './CommitBody'
+const customHistory = createBrowserHistory();
 
-const App = (props) => {
-
-  const [commits, setcommits] = useState([])
-
-  useEffect(() => {
-    const getCommits = async () => {
-      var commits = await historyService.getCommits()
-      setcommits(commits)
+class App extends Component {
+    render() {
+        return (
+            <Router history={customHistory}>
+                <Route render={({ location }) => (
+                    <Fragment key={location.pathname}>
+                        <AppRoutes />
+                    </Fragment>
+                )} />
+            </Router >
+        );
     }
-    getCommits();
-  }, []);
-
-  const rendercommits = (commits) => {
-    return commits.map((commit) => <CommitBody key={commit.node_id} commit={commit.commit} />)
-  }
-  return (
-    <table>
-      <tbody>
-        {rendercommits(commits)}
-      </tbody>
-    </table>
-  )
 }
 export default App;
