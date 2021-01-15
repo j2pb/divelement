@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
+import { historyService } from './_services'
+import CommitBody from './CommitBody'
+
+const App = (props) => {
+
+  const [commits, setcommits] = useState([])
+
+  useEffect(() => {
+    const getCommits = async () => {
+      var commits = await historyService.getCommits()
+      setcommits(commits)
+    }
+    getCommits();
+  }, []);
+
+  const rendercommits = (commits) => {
+    return commits.map((commit) => <CommitBody key={commit.node_id} commit={commit.commit} />)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <table>
+      <tbody>
+        {rendercommits(commits)}
+      </tbody>
+    </table>
+  )
 }
-
 export default App;
