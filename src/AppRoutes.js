@@ -1,7 +1,7 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-const History = lazy(() => import('./components/History'));
+const History = lazy(() => import('./components/Branches'));
 const Error404 = lazy(() => import('./components/Error404'));
 
 class AppRoutes extends Component {
