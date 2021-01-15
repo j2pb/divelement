@@ -1,6 +1,6 @@
 # divelement
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a web application project that shows git commit history of itself
 
 ## Available Scripts
 
