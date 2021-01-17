@@ -21,6 +21,7 @@ const NavigationBar = (props) => {
                     <Nav className="d-flex">
                         <Nav.Link href="#" onSelect={(e) => goTo('/history')}>history</Nav.Link>
                         <Nav.Link href="#" onSelect={(e) => goTo('/profile')}>profile</Nav.Link>
+                        <Nav.Link href="#" onSelect={(e) => goTo('/readme')}>readme</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

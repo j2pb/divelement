@@ -29,9 +29,17 @@ function getUserProfile() {
         console.log(err)
     })
 }
+function getProjectReadme(branch) {
+    return axios.get(`https://raw.githubusercontent.com/${config.owner}/${config.projectName}/${branch}/README.md`, config.additionalConfig).then(({ data }) => {
+        return data
+    }).catch(err => {
+        console.log(err)
+    })
+}
 export const historyService = {
     getCommits,
     getBranches,
     getUserProfile,
-    getRepoProfile
+    getRepoProfile,
+    getProjectReadme
 };
