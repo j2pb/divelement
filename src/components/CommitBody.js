@@ -4,7 +4,7 @@ import moment from 'moment'
 const CommitBody = (props) => {
     const { commit } = props;
     const creationDate = (date) => {
-        var startOf = moment().isSame(date, 'day') ? "day" : "hour";
+        var startOf = moment().isSame(date, 'day') ? "hour" : "day";
         var formatedDate = `committed ${moment(date).startOf(startOf).fromNow()}`;
         return formatedDate
     }
