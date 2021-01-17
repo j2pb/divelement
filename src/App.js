@@ -16,7 +16,7 @@ class App extends Component {
             <Router history={customHistory}>
                 <div>
                     <Navbar />
-                    <div className="container">
+                    <div className="container mt-4">
                         <Route render={({ location }) => (
                             <Fragment key={location.pathname}>
                                 <AppRoutes />
